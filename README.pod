@@ -1,0 +1,83 @@
+=pod
+
+=head1 NAME
+
+Catalyst::Plugin::ConfigLoaderDirs - Load config from a selection of specified
+directories
+
+=head1 VERSION
+
+version 0.01
+
+=head1 SYNOPSIS
+
+    package MyApp;
+
+    use strict;
+    use warnings;
+
+    use Catalyst::Runtime '5.70';
+
+    use Catalyst qw/-Debug ConfigLoaderDirs/;
+
+    our $VERSION = '0.01';
+
+    __PACKAGE__->config( name => 'MyApp' );
+    __PACKAGE__->config( 'Plugin::ConfigLoaderDirs' => { directory => [ '/etc', '__HOME__' ] } );
+
+    __PACKAGE__->setup;
+
+    1;
+
+=head1 DESCRIPTION
+
+This is a thin layer over L<Catalyst::Plugin::ConfigLoader> that allows the
+specification of a set of directories to search for configuration data.  This
+allows, for example, the use of a global configuration directory to be used
+rather than the configuration being within the application directory itself.
+
+As this is an initial trial module it has not been pushed to CPAN at this time.
+
+=head2 find_files
+
+This method determines the potential file paths to be used for config loading.
+It returns an array of paths including the extension to pass to
+L<Config::Any|Config::Any> for loading.
+
+=head2 get_config_directory_set
+
+Returns a set of directories to search for config within, based on the
+information configured for C<Plugin::ConfigLoaderDirs> under the C<directory>
+key.
+
+=head1 INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
+
+=head1 BUGS AND LIMITATIONS
+
+You can make new bug reports, and view existing ones, through the web interface
+at L<https://github.com/nigelm/catalyst-plugin-configloaderdirs/issues>.
+
+=head1 AVAILABILITY
+
+The project homepage is
+L<https://github.com/nigelm/catalyst-plugin-configloaderdirs/>.
+
+The latest version of this module is available from the Comprehensive Perl
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN site
+near you, or see
+L<https://metacpan.org/module/Catalyst::Plugin::ConfigLoaderDirs/>.
+
+=head1 AUTHOR
+
+Nigel Metheringham <nigelm@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by Nigel Metheringham.
+
+This is free software; you can redistribute it and/or modify it under the same
+terms as the Perl 5 programming language system itself.
+
+=cut
